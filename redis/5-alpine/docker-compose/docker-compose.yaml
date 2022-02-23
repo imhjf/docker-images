@@ -1,0 +1,33 @@
+version: "3.2"
+services:
+  redis:
+    image: registry.cn-hangzhou.aliyuncs.com/fancybull/redis:5.0.7-alpine
+    container_name: redis
+    restart: always
+    command: [ "redis-server", "/usr/local/redis.conf" ]
+    ports:
+    - "127.0.0.1:6379:6379"
+    volumes:
+      - type: bind
+        source: ./redis.conf
+        target: /usr/local/redis.conf
+      - type: volume
+        source: redis-data
+        target: /data
+    # network_mode: host
+#     networks:
+#       - hjf
+    # 使用nat模式不与宿主机共享统一network变量空间,需独立设置
+#    sysctls:
+#      net.core.somaxconn: 511
+
+# networks:
+#   hjf:
+#     driver: bridge
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 172.99.238.0/24
+
+volumes:
+  redis-data:

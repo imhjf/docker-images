@@ -1,0 +1,13 @@
+version: "2"
+services:
+  frpc:
+    image: registry.cn-hangzhou.aliyuncs.com/fancybull/frp:0.31.2_client-alpine
+    container_name: frpc
+    restart: always
+    ports:
+      - "17000:7000"
+      - "17500:7500"
+      - "18080:8080"
+    volumes:
+      - ./frpc.ini:/opt/frp/frpc.ini
+      - ./log:/opt/frp/log

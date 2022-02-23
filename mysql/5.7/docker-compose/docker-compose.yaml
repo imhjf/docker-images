@@ -1,0 +1,34 @@
+version: "3.2"
+services:
+  mysql:
+    image: registry.cn-hangzhou.aliyuncs.com/fancybull/mysql:5.7-server  
+    container_name: mysql
+    restart: always
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - type: bind
+        source: ./conf
+        target: /etc/mysql
+      # - type: volume
+      #   source: mysql_logs
+      #   target: /var/log/mysql
+      - type: volume
+        source: mysql_data
+        target: /var/lib/mysql
+    environment:
+      - MYSQL_USER=wssn
+      - MYSQL_PASSWORD=R2KZ@niehmNoQ^O5
+      - MYSQL_ROOT_PASSWORD=asRgrz2bT2dfgoLKGjxBJvfb1uqXIRu
+    # network_mode: host
+    # networks:
+      # - default
+
+# networks:
+  # default:
+    # external:
+      # name: dockernet
+
+volumes:
+  # mysql_logs:
+  mysql_data:

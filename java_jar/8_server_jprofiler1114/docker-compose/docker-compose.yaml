@@ -1,0 +1,21 @@
+version: "2"
+services:
+  8_server_jprofiler1114:
+    image: registry.cn-hangzhou.aliyuncs.com/fancybull/java_jar:8_server_jprofiler1114
+    # image: java_jar:8_server_jprofiler1114
+    container_name: 8_server_jprofiler1114
+    restart: always
+    # command: ["user_id", "group_id", "jar", "**kwargs"] 
+    command: ["501", "501", "demo-0.0.1-SNAPSHOT.jar", "--server.port=9929"] 
+    volumes:
+      - ./app:/projects
+    ports: 
+      - 9929:9929
+      - 8849:8849
+    # networks:
+      # - default
+
+# networks:
+#   default:
+#     external:
+#       name: dockernet

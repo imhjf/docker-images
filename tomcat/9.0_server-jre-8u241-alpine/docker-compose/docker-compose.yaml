@@ -1,0 +1,18 @@
+version: "2"
+services:
+  tomcat:
+    image: registry.cn-hangzhou.aliyuncs.com/fancybull/tomcat:9.0.56_server-jre-8u241-alpine
+    container_name: tomcat
+    restart: always
+    environment:
+      - TOMCAT_HTTP_PORT=8081 #HTTP端口
+      #- TOMCAT_AJP_PORT=8009 #AJP端口
+      #- TOMCAT_SHD_PORT=8005 #SHUTDOWN端口
+    volumes:
+      - ./webapps:/opt/tomcat/webapps
+      - ./logs:/opt/tomcat/logs
+    network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"

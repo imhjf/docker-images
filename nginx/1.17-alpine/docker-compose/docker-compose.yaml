@@ -1,0 +1,21 @@
+version: "2"
+services:
+  nginx:
+    image: registry.cn-hangzhou.aliyuncs.com/fancybull/nginx:1.17.10
+    container_name: nginx9
+    restart: always
+    command: ["1000", "1000"] 
+    ports:
+      - "28888:80"
+    volumes:
+        - ./html:/nginx/html
+        - ./nginx.conf:/nginx/conf/nginx.conf
+        - ./logs:/nginx/logs/
+        # - ssl:/opt/ssl
+#     networks:
+#       - default
+
+# networks:
+#   default:
+#     external:
+#       name: dockernet

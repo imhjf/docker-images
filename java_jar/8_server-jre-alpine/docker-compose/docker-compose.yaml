@@ -1,0 +1,17 @@
+version: "2"
+services:
+  8_server-jre-alpine:
+    image: registry.cn-hangzhou.aliyuncs.com/fancybull/java_jar:8_server-jre-alpine
+    container_name: 8_server-jre-alpine
+    restart: always
+    # command: ["user_id", "group_id", "jar", "**kwargs"] 
+    command: ["1000", "1000", "demo-0.0.1-SNAPSHOT.jar", "--server.port=9929"] 
+    volumes:
+      - ./app:/projects
+    # networks:
+      # - default
+
+# networks:
+#   default:
+#     external:
+#       name: dockernet

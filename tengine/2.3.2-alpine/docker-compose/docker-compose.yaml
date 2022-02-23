@@ -1,0 +1,17 @@
+version: "2"
+services:
+  tengine:
+    image: registry.cn-hangzhou.aliyuncs.com/fancybull/tengine:2.3.2
+    container_name: tengine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+        - example.com.conf:/etc/nginx/conf.d/example.com.conf
+    networks:
+      - default
+networks:
+  default:
+    external:
+      name: dockernet

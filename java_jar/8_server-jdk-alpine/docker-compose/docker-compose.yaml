@@ -1,0 +1,30 @@
+version: "2"
+services:
+  8_server-jdk-alpine:
+    image: registry.cn-hangzhou.aliyuncs.com/fancybull/java_jar:8_server-jdk-alpine
+    # image: java_jar:8_server-jdk-alpine
+    container_name: 8_server-jdk-alpine
+    restart: always
+    environment:
+      - JVM_XMS=256m
+      - JVM_XMX=256m
+      - JVM_XMN=128m
+      - JVM_MSS=32m
+      - JVM_MSX=128m
+    # command: ["user_id", "group_id", "jar", "**kwargs"] 
+    command: ["501", "501", "demo-0.0.1-SNAPSHOT.jar", "--server.port=9929"] 
+    volumes:
+      - ./app:/projects
+    ports: 
+      - 9929:9929
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+    # networks:
+      # - default
+
+# networks:
+#   default:
+#     external:
+#       name: dockernet

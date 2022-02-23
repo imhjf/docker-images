@@ -1,0 +1,7 @@
+**/.DS_Store
+README.sublime-workspace
+redis/5.0.7-alpine/docker-compose/data
+**/logs
+**/webapps
+**/.idea
+**.jar
